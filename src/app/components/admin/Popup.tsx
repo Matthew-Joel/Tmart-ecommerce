@@ -2,7 +2,7 @@ import { setLoading } from "@/app/redux/features/loadingSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
 import { makeToast } from "@/utils/helper";
 import axios from "axios";
-import { Dispatch, FocusEvent, SetStateAction, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 interface PropsType {
@@ -20,7 +20,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: PropsType) => {
     price: productData.price,
   });
 
-  const handleSubmit = (e:FocusEvent ) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(setLoading(true));
 
@@ -36,6 +36,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: PropsType) => {
         setOpenPopup(false);
       });
   };
+
   return (
     <div className="fixed top-0 left-0 w-full h-screen bg-[#00000070] grid place-items-center">
       <div className="bg-white w-[700px] py-8 rounded-lg text-center relative">
